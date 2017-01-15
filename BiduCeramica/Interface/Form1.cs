@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Data.Entities;
+using Data.Data;
 
 namespace Interface
 {
@@ -15,6 +17,19 @@ namespace Interface
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Cliente model = new Cliente();
+            ClienteData dao = new ClienteData();
+
+            model.BairroId = int.Parse(txtId.Text);
+            model.Nome = txtNome.Text;
+            model.Numero = txtNumero.Text;
+            model.Observacao = txtDescricao.Text;
+
+            dao.Inserir(model);
         }
     }
 }
